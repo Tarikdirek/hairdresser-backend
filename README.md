@@ -1,4 +1,4 @@
-# Kuafor Backend
+# Hairdresser Backend
 
 A Node.js + MongoDB backend for a barber/salon website.
 
