@@ -1,7 +1,7 @@
-const Stylist = require("../models/Stylist");
+import Stylist from "../models/Stylist.js";
 
 // Add a new stylist
-exports.create = async (req, res) => {
+export const create = async (req, res) => {
   try {
     const { name, bio, specialties, workingHours } = req.body;
     const stylist = new Stylist({ name, bio, specialties, workingHours });
@@ -13,7 +13,7 @@ exports.create = async (req, res) => {
 };
 
 // Edit a stylist
-exports.update = async (req, res) => {
+export const update = async (req, res) => {
   try {
     const { id } = req.params;
     const stylist = await Stylist.findByIdAndUpdate(id, req.body, {
@@ -27,7 +27,7 @@ exports.update = async (req, res) => {
 };
 
 // Get all stylists
-exports.getAll = async (req, res) => {
+export const getAll = async (req, res) => {
   try {
     const stylists = await Stylist.find();
     res.json(stylists);
