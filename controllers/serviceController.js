@@ -1,7 +1,7 @@
-const Service = require("../models/Service");
+import Service from "../models/Service.js";
 
 // Create a new service
-exports.create = async (req, res) => {
+export const create = async (req, res) => {
   try {
     const { name, description, price, duration, category } = req.body;
     const service = new Service({
@@ -19,7 +19,7 @@ exports.create = async (req, res) => {
 };
 
 // Get all services
-exports.getAll = async (req, res) => {
+export const getAll = async (req, res) => {
   try {
     const services = await Service.find();
     res.json(services);
@@ -29,7 +29,7 @@ exports.getAll = async (req, res) => {
 };
 
 // Update a service
-exports.update = async (req, res) => {
+export const update = async (req, res) => {
   try {
     const { id } = req.params;
     const service = await Service.findByIdAndUpdate(id, req.body, {
@@ -43,7 +43,7 @@ exports.update = async (req, res) => {
 };
 
 // Delete a service
-exports.delete = async (req, res) => {
+export const deleteService = async (req, res) => {
   try {
     const { id } = req.params;
     const service = await Service.findByIdAndDelete(id);

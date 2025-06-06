@@ -1,11 +1,10 @@
-const Appointment = require("../models/Appointment");
-const Stylist = require("../models/Stylist");
+import Appointment from "../models/Appointment.js";
+import Stylist from "../models/Stylist.js";
 
 // Book an appointment
-exports.book = async (req, res) => {
+export const book = async (req, res) => {
   try {
-    const { stylist, service, date, time } = req.body;
-    const user = req.user.id;
+    const { stylist, service, date, time, user } = req.body;
     // Check if stylist is available at the given date and time
     const existing = await Appointment.findOne({
       stylist,
@@ -20,12 +19,13 @@ exports.book = async (req, res) => {
     await appointment.save();
     res.status(201).json({ message: "Appointment booked", appointment });
   } catch (err) {
+    console.log(err);
     res.status(500).json({ message: "Server error" });
   }
 };
 
 // Cancel an appointment
-exports.cancel = async (req, res) => {
+export const cancel = async (req, res) => {
   try {
     const { id } = req.params;
     const appointment = await Appointment.findById(id);

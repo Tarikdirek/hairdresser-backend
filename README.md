@@ -4,7 +4,7 @@ A Node.js + MongoDB backend for a barber/salon website.
 
 ## Features
 
-- User authentication (JWT)
+- User registration and login (no authentication required for endpoints)
 - User profiles
 - Appointment booking/cancellation
 - Service management (CRUD)
@@ -21,7 +21,6 @@ A Node.js + MongoDB backend for a barber/salon website.
 3. Create a `.env` file with:
    ```env
    MONGODB_URI=mongodb://localhost:27017/kuafor
-   JWT_SECRET=your_jwt_secret_here
    PORT=5000
    ```
 4. Start MongoDB locally or use a cloud provider.
@@ -34,19 +33,19 @@ A Node.js + MongoDB backend for a barber/salon website.
 
 - `POST /api/auth/signup` — Register user
 - `POST /api/auth/login` — Login user
-- `POST /api/appointments/book` — Book appointment (auth required)
-- `POST /api/appointments/cancel/:id` — Cancel appointment (auth required)
-- `POST /api/services` — Create service (auth required)
+- `POST /api/appointments/book` — Book appointment
+- `POST /api/appointments/cancel/:id` — Cancel appointment
+- `POST /api/services` — Create service
 - `GET /api/services` — List services
-- `PUT /api/services/:id` — Update service (auth required)
-- `DELETE /api/services/:id` — Delete service (auth required)
-- `POST /api/stylists` — Add stylist (auth required)
+- `PUT /api/services/:id` — Update service
+- `DELETE /api/services/:id` — Delete service
+- `POST /api/stylists` — Add stylist
 - `GET /api/stylists` — List stylists
-- `PUT /api/stylists/:id` — Edit stylist (auth required)
-- `POST /api/gallery/upload` — Upload gallery image (auth required, multipart/form-data)
+- `PUT /api/stylists/:id` — Edit stylist
+- `POST /api/gallery/upload` — Upload gallery image (multipart/form-data)
 
 ## Notes
 
-- Protect sensitive routes with JWT (see `middleware/auth.js`).
+- All endpoints are now public; no authentication or token is required.
 - Images are stored in `/uploads`.
 - MongoDB must be running for the backend to work.

@@ -1,7 +1,7 @@
-const Stylist = require("../models/Stylist");
+import Stylist from "../models/Stylist.js";
 
 // Upload image to stylist's gallery
-exports.upload = async (req, res) => {
+export const upload = async (req, res) => {
   try {
     const { stylistId, category } = req.body;
     const file = req.file;

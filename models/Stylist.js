@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const stylistSchema = new mongoose.Schema(
   {
@@ -14,4 +14,4 @@ const stylistSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Stylist", stylistSchema);
+export default mongoose.model("Stylist", stylistSchema);
